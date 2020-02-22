@@ -14,7 +14,7 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ColumnListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 import org.apache.commons.lang.ArrayUtils;
-import org.express.portal.cache.CacheManager;
+import io.express.cache.CacheManager;
 
 public class QueryHelper
 {

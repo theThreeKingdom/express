@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.express.portal.persist.convert.ResultConverter;
+import io.express.persist.convert.ResultConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

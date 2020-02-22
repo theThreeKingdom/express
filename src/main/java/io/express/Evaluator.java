@@ -32,7 +32,7 @@ public class Evaluator {
                     n1 = Long.parseLong(stack.pop());
                     n2 = Long.parseLong(stack.pop());
                     result = doOperate(n1, n2, element);
-                    stack.push(new Long(result).toString());
+                    stack.push(Long.toString(result));
                 } else {
                     stack.push(element);
                 }

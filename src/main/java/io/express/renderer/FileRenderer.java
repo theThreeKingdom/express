@@ -1,4 +1,4 @@
-package org.express.portal.renderer;
+package io.express.renderer;
 
 import java.io.BufferedInputStream;
 import java.io.File;

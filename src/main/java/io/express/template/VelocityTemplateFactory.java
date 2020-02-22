@@ -1,4 +1,4 @@
-package org.express.portal.template;
+package io.express.template;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -10,7 +10,7 @@ import java.util.Set;
 
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.RuntimeInstance;
-import org.express.portal.Config;
+import io.express.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

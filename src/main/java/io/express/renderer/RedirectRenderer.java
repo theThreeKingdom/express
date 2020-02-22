@@ -1,4 +1,4 @@
-package org.express.portal.renderer;
+package io.express.renderer;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
