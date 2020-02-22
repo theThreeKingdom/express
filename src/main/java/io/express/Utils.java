@@ -1,27 +1,17 @@
 package io.express;
 
-import java.security.InvalidKeyException;
-import java.security.Key;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.security.spec.InvalidKeySpecException;
-import java.util.Random;
-import java.util.UUID;
-
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.KeyGenerator;
-import javax.crypto.NoSuchPaddingException;
-import javax.servlet.ServletException;
-
 import io.express.container.ContainerFactory;
 import io.express.template.TemplateFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import sun.misc.BASE64Encoder;
+import javax.crypto.*;
+import javax.servlet.ServletException;
+import java.security.*;
+import java.security.spec.InvalidKeySpecException;
+import java.util.Base64;
+import java.util.Random;
+import java.util.UUID;
 
 /**
  * Utils for create ContainerFactory, TemplateFactory, etc.
@@ -138,8 +128,10 @@ public class Utils {
         byte[] encryptedData = cipher.doFinal(data);
 
         System.out.println("加密后===>" + encryptedData);
-        BASE64Encoder encoder = new BASE64Encoder();
-        String ret = encoder.encode(encryptedData);
+        Base64.Encoder encoder = Base64.getEncoder();
+        //BASE64Encoder encoder = new BASE64Encoder();
+        //String ret = encoder.encode(encryptedData);
+        String ret = encoder.encodeToString(encryptedData);
         return ret;
     }
 }
