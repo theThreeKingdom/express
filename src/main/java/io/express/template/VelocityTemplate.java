@@ -12,49 +12,42 @@ import org.apache.velocity.io.VelocityWriter;
 /**
  * Template using Velocity.
  */
-public class VelocityTemplate implements Template
-{
+public class VelocityTemplate implements Template {
 
-	private org.apache.velocity.Template template;
-	private String contentType;
-	private String encoding;
+    private org.apache.velocity.Template template;
+    private String contentType;
+    private String encoding;
 
-	public VelocityTemplate(org.apache.velocity.Template template, String contentType, String encoding)
-	{
-		this.template = template;
-		this.contentType = contentType;
-		this.encoding = encoding;
-	}
+    public VelocityTemplate(org.apache.velocity.Template template, String contentType, String encoding) {
+        this.template = template;
+        this.contentType = contentType;
+        this.encoding = encoding;
+    }
 
-	public void render(HttpServletRequest request, HttpServletResponse response, Map<String, Object> model) throws Exception
-	{
-		StringBuilder sb = new StringBuilder(64);
-		sb.append(contentType == null ? "text/html" : contentType).append(";charset=").append(encoding == null ? "UTF-8" : encoding);
-		response.setContentType(sb.toString());
-		response.setCharacterEncoding(encoding == null ? "UTF-8" : encoding);
-		// init context:
-		Context context = new VelocityContext(model);
-		context.put("date", new org.apache.velocity.tools.generic.DateTool());
-		afterContextPrepared(context);
-		// render:
-		VelocityWriter vw = new VelocityWriter(response.getWriter());
-		try
-		{
-			template.merge(context, vw);
-			vw.flush();
-		}
-		finally
-		{
-			vw.recycle(null);
-		}
-	}
+    public void render(HttpServletRequest request, HttpServletResponse response, Map<String, Object> model) throws Exception {
+        StringBuilder sb = new StringBuilder(64);
+        sb.append(contentType == null ? "text/html" : contentType).append(";charset=").append(encoding == null ? "UTF-8" : encoding);
+        response.setContentType(sb.toString());
+        response.setCharacterEncoding(encoding == null ? "UTF-8" : encoding);
+        // init context:
+        Context context = new VelocityContext(model);
+        context.put("date", new org.apache.velocity.tools.generic.DateTool());
+        afterContextPrepared(context);
+        // render:
+        VelocityWriter vw = new VelocityWriter(response.getWriter());
+        try {
+            template.merge(context, vw);
+            vw.flush();
+        } finally {
+            vw.recycle(null);
+        }
+    }
 
-	/**
-	 * Let subclass do some initial work after Velocity context prepared.
-	 * 
-	 * @param context Velocity context object.
-	 */
-	protected void afterContextPrepared(Context context)
-	{
-	}
+    /**
+     * Let subclass do some initial work after Velocity context prepared.
+     *
+     * @param context Velocity context object.
+     */
+    protected void afterContextPrepared(Context context) {
+    }
 }
