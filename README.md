@@ -1,2 +1,2 @@
 # express
-一个小清新的Java Web 开发框架
+A small fresh java web development framework，build on Guice
