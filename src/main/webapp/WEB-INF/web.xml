@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<description>WEB PORTAL</description>
+	<display-name>WEB APPLICATION</display-name>
+	<filter>
+		<filter-name>Set Character Encoding</filter-name>
+		<filter-class>
+			org.apache.catalina.filters.SetCharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ignore</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<filter-name>dispatcher</filter-name>
+		<filter-class>io.express.DispatcherFilter</filter-class>
+		<init-param>
+			<param-name>container</param-name>
+			<param-value>Guice</param-value>
+		</init-param>
+		<init-param>
+			<param-name>maxFileSize</param-name>
+			<param-value>104857600</param-value>
+		</init-param>
+		<init-param>
+			<param-name>modules</param-name>
+			<param-value>com.sample.SampleModule</param-value>
+		</init-param>
+		<init-param>
+			<param-name>template</param-name>
+			<param-value>Velocity</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>Set Character Encoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>dispatcher</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<session-config>
+		<session-timeout>10</session-timeout>
+	</session-config>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/403.htm</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/404.htm</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/500.htm</location>
+	</error-page>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>express</web-resource-name>
+			<url-pattern>/*</url-pattern>
+		</web-resource-collection>
+		<user-data-constraint>
+			<!-- <transport-guarantee>CONFIDENTIAL</transport-guarantee> -->
+			<transport-guarantee>NONE</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+</web-app>
