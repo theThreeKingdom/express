@@ -17,7 +17,6 @@ import java.util.Map;
 public class ThymeleafTemplate implements Template {
 
     private org.thymeleaf.TemplateEngine template;
-//    private org.thymeleaf.templateresource.ITemplateResource templateResource;
     private String contentType;
     private String encoding;
 
@@ -35,6 +34,8 @@ public class ThymeleafTemplate implements Template {
 
         // init context:
         org.thymeleaf.context.Context context = new org.thymeleaf.context.Context();
+        org.thymeleaf.templateresolver.ITemplateResolver tr = new org.thymeleaf.templateresolver.ServletContextTemplateResolver(request.getServletContext());
+        template.setTemplateResolver(tr);
         template.process("",context);
 
     }
