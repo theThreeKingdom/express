@@ -16,11 +16,12 @@ import java.util.Map;
  **/
 public class ThymeleafTemplate implements Template {
 
-    private org.thymeleaf.templateresource.ITemplateResource template;
+    private org.thymeleaf.TemplateEngine template;
+//    private org.thymeleaf.templateresource.ITemplateResource templateResource;
     private String contentType;
     private String encoding;
 
-    public ThymeleafTemplate(org.thymeleaf.templateresource.ITemplateResource template,String contentType,String encoding){
+    public ThymeleafTemplate(org.thymeleaf.TemplateEngine template,String contentType,String encoding){
         this.template = template;
         this.contentType = contentType;
         this.encoding = encoding;
@@ -31,7 +32,10 @@ public class ThymeleafTemplate implements Template {
         sb.append(contentType == null ? "text/html" : contentType).append(";charset=").append(encoding == null ? "UTF-8" : encoding);
         response.setContentType(sb.toString());
         response.setCharacterEncoding(encoding == null ? "UTF-8" : encoding);
+
         // init context:
+        org.thymeleaf.context.Context context = new org.thymeleaf.context.Context();
+        template.process("",context);
 
     }
 }
