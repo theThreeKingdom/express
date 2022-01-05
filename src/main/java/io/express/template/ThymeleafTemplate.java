@@ -36,7 +36,7 @@ public class ThymeleafTemplate implements Template {
         org.thymeleaf.context.Context context = new org.thymeleaf.context.Context();
         org.thymeleaf.templateresolver.ITemplateResolver tr = new org.thymeleaf.templateresolver.ServletContextTemplateResolver(request.getServletContext());
         template.setTemplateResolver(tr);
-        template.process("",context);
+        template.process("",context,response.getWriter());
 
     }
 }

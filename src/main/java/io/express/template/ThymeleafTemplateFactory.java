@@ -32,10 +32,15 @@ public class ThymeleafTemplateFactory extends TemplateFactory {
             webAppPath = webAppPath + File.separator;
         log.info("Detect web application path: " + webAppPath);
         log.info("init ThymeleafTemplateFactory...");
+
+
     }
 
     @Override
     public Template loadTemplate(String path) throws Exception {
-        return null;
+        if (log.isDebugEnabled())
+            log.debug("Load Thymeleaf template '" + path + "'.");
+
+        return new ThymeleafTemplate(null,null,outputEncoding);
     }
 }
