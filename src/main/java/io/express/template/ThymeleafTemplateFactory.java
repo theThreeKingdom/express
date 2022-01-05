@@ -33,7 +33,6 @@ public class ThymeleafTemplateFactory extends TemplateFactory {
         log.info("Detect web application path: " + webAppPath);
         log.info("init ThymeleafTemplateFactory...");
 
-
     }
 
     @Override

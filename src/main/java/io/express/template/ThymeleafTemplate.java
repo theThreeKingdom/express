@@ -25,6 +25,7 @@ public class ThymeleafTemplate implements Template {
         this.contentType = contentType;
         this.encoding = encoding;
     }
+
     @Override
     public void render(HttpServletRequest request, HttpServletResponse response, Map<String, Object> model) throws Exception {
         StringBuilder sb = new StringBuilder(64);
